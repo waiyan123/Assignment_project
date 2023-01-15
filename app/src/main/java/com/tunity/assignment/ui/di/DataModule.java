@@ -1,13 +1,10 @@
 package com.tunity.assignment.ui.di;
 
 import com.tunity.assignment.data.database.room.MyRoomDatabase;
-import com.tunity.assignment.data.database.room.dao.NewsDao;
-import com.tunity.assignment.data.database.room.repository.NewsListRoom;
-import com.tunity.assignment.data.network.retrofit.repository.NewsListRetrofit;
-import com.tunity.assignment.data.network.retrofit.service.RetrofitService;
+import com.tunity.assignment.data.database.LocalRepository;
+import com.tunity.assignment.data.network.NetworkRepository;
+import com.tunity.assignment.data.network.retrofit.api.RetrofitApi;
 import com.tunity.assignment.data.repository.mapper.NewsMapper;
-
-import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
@@ -21,18 +18,18 @@ public class DataModule {
 
     @Provides
     @ViewModelScoped
-    public NewsListRetrofit providesNewsListRetrofitInstance(
-            RetrofitService retrofitService
+    public NetworkRepository providesNewsListRetrofitInstance(
+            RetrofitApi retrofitApi
     ) {
-        return new NewsListRetrofit(retrofitService);
+        return new NetworkRepository(retrofitApi);
     }
 
     @Provides
     @ViewModelScoped
-    public NewsListRoom providesNewsListRoomInstance(
+    public LocalRepository providesNewsListRoomInstance(
             MyRoomDatabase myRoomDatabase
     ) {
-        return new NewsListRoom(myRoomDatabase);
+        return new LocalRepository(myRoomDatabase);
     }
 
     @Provides

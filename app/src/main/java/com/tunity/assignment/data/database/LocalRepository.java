@@ -1,4 +1,4 @@
-package com.tunity.assignment.data.database.room.repository;
+package com.tunity.assignment.data.database;
 
 import com.tunity.assignment.data.database.room.MyRoomDatabase;
 import com.tunity.assignment.data.database.room.entity.ArticleEntity;
@@ -8,12 +8,12 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-public class NewsListRoom {
+public class LocalRepository {
 
     private final MyRoomDatabase myRoomDatabase;
 
     @Inject
-    public NewsListRoom(MyRoomDatabase myRoomDatabase) {
+    public LocalRepository(MyRoomDatabase myRoomDatabase) {
         this.myRoomDatabase = myRoomDatabase;
     }
 
