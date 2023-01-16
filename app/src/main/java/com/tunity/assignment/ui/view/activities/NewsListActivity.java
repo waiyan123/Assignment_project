@@ -1,25 +1,22 @@
 package com.tunity.assignment.ui.view.activities;
 
-import androidx.annotation.NonNull;
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.tunity.assignment.R;
+import com.tunity.assignment.ui.util.NetworkStateManager;
 import com.tunity.assignment.data.database.room.entity.ArticleEntity;
+import com.tunity.assignment.ui.util.UiConstants;
 import com.tunity.assignment.ui.view.adapters.NewsRecyclerAdapter;
 import com.tunity.assignment.ui.view.listeners.AdapterPositionListener;
 import com.tunity.assignment.ui.view.listeners.ListItemOnClickListener;
 import com.tunity.assignment.ui.viewmodel.NewsListViewModel;
-
-import java.util.List;
-
 import dagger.hilt.android.AndroidEntryPoint;
 
 @AndroidEntryPoint
@@ -31,6 +28,12 @@ public class NewsListActivity extends BaseActivity implements ListItemOnClickLis
     private SwipeRefreshLayout swipeRefreshLayout;
     private FloatingActionButton fabToTop;
 
+    private final Observer<Boolean> activeNetworkStateObserver = isConnected -> {
+        if(!isConnected) {
+            showSnackBar(UiConstants.connection_unavailable,findViewById(R.id.layout_news_list));
+        }
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,8 +41,6 @@ public class NewsListActivity extends BaseActivity implements ListItemOnClickLis
 
         swipeRefreshLayout = findViewById(R.id.layout_swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(this);
-
-
 
         rvList = findViewById(R.id.rv_news_list);
         rvAdapter = new NewsRecyclerAdapter(this,this);
@@ -63,21 +64,25 @@ public class NewsListActivity extends BaseActivity implements ListItemOnClickLis
         });
         mViewModel.fetchArticlesList();
 
+        NetworkStateManager.getInstance().getNetworkConnectivityStatus()
+                .observe(this, activeNetworkStateObserver);
     }
+
 
     @Override
     public void onClickItem(ArticleEntity article) {
-
+        showSnackBar("Check your network connection . . . ",findViewById(R.id.layout_news_list));
     }
 
+    //On swipe refreshed
     @Override
     public void onRefresh() {
         mViewModel.fetchArticlesList();
     }
 
+    //Recyclerview scroll position
     @Override
     public void onPosition(Integer position) {
-        Log.d("test---","position "+position);
         if(position>5) fabToTop.show();
         else fabToTop.hide();
     }

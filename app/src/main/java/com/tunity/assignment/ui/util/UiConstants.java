@@ -2,6 +2,10 @@ package com.tunity.assignment.ui.util;
 
 public class UiConstants {
 
+    //connection status
+    public static final String connection_unavailable = "Disconnected!, please check your network.";
+    public static final String got_it = "Got it";
+
     //default values
     public static final String default_author = "Anonymous";
     public static final String default_title = "Untitled";

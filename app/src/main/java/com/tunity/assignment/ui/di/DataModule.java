@@ -4,7 +4,7 @@ import com.tunity.assignment.data.database.room.MyRoomDatabase;
 import com.tunity.assignment.data.database.LocalRepository;
 import com.tunity.assignment.data.network.NetworkRepository;
 import com.tunity.assignment.data.network.retrofit.api.RetrofitApi;
-import com.tunity.assignment.data.repository.mapper.NewsMapper;
+import com.tunity.assignment.data.NewsMapper;
 
 import dagger.Module;
 import dagger.Provides;

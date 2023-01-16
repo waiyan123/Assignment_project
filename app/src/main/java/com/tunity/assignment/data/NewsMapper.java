@@ -1,4 +1,4 @@
-package com.tunity.assignment.data.repository.mapper;
+package com.tunity.assignment.data;
 
 import android.util.Log;
 

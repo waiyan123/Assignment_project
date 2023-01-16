@@ -8,7 +8,7 @@ import com.tunity.assignment.data.database.LocalRepository;
 import com.tunity.assignment.data.network.NetworkRepository;
 import com.tunity.assignment.data.network.retrofit.response.ArticleVO;
 import com.tunity.assignment.data.network.retrofit.util.NetworkConstants;
-import com.tunity.assignment.data.repository.mapper.NewsMapper;
+import com.tunity.assignment.data.NewsMapper;
 import java.util.List;
 import javax.inject.Inject;
 import dagger.hilt.android.lifecycle.HiltViewModel;
