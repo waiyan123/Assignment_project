@@ -11,9 +11,7 @@ public class SourceNetwork {
     public String name;
 
     public SourceNetwork(String id, String name) {
-        if(id!=null) this.id = id;
-        else this.id = "0";
-        if(name!=null) this.name = name;
-        else this.name = "Unknown";
+        this.id = id;
+        this.name = name;
     }
 }

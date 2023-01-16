@@ -5,9 +5,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 import com.tunity.assignment.data.database.room.util.DatabaseConstants;
+import com.tunity.assignment.ui.model.BaseModel;
 
 @Entity(tableName = "article_table")
-public class ArticleEntity {
+public class ArticleEntity extends BaseModel {
 
     @ColumnInfo(name = DatabaseConstants.SOURCE)
     public SourceLocal sourceLocal;

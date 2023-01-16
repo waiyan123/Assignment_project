@@ -1,22 +1,16 @@
 package com.tunity.assignment.ui.viewmodel;
 
-import android.util.Log;
-
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import com.tunity.assignment.data.database.room.entity.ArticleEntity;
 import com.tunity.assignment.data.database.LocalRepository;
 import com.tunity.assignment.data.network.NetworkRepository;
 import com.tunity.assignment.data.network.retrofit.response.ArticleVO;
 import com.tunity.assignment.data.network.retrofit.util.NetworkConstants;
 import com.tunity.assignment.data.repository.mapper.NewsMapper;
-
 import java.util.List;
-
 import javax.inject.Inject;
-
 import dagger.hilt.android.lifecycle.HiltViewModel;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
@@ -29,8 +23,17 @@ public class NewsListViewModel extends ViewModel {
     private final MutableLiveData<List<ArticleEntity>> articlesListLiveData = new MutableLiveData<>();
     private final MutableLiveData<String> errorLiveData = new MutableLiveData<>();
 
+    private LocalRepository localRepository ;
+    private NetworkRepository networkRepository;
+    private NewsMapper newsMapper;
     @Inject
     public NewsListViewModel(LocalRepository localRepository, NetworkRepository networkRepository, NewsMapper newsMapper) {
+        this.localRepository = localRepository;
+        this.networkRepository = networkRepository;
+        this.newsMapper = newsMapper;
+    }
+
+    public void fetchArticlesList() {
         localRepository.getNewsListFromRoom()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -43,7 +46,6 @@ public class NewsListViewModel extends ViewModel {
                     @Override
                     public void onNext(List<ArticleEntity> entityList) {
                         articlesListLiveData.postValue(entityList);
-                        Log.d("test---","list from room "+entityList.size());
                     }
 
                     @Override
@@ -70,7 +72,6 @@ public class NewsListViewModel extends ViewModel {
                     public void onNext(List<ArticleVO> voList) {
                         articlesListLiveData.postValue(newsMapper.mapVoListToEntityList(voList));
                         localRepository.addNewsListToRoom(newsMapper.mapVoListToEntityList(voList));
-                        Log.d("test---","list from network "+voList.size());
                     }
 
                     @Override

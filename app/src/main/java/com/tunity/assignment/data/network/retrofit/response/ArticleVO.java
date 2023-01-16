@@ -2,8 +2,9 @@ package com.tunity.assignment.data.network.retrofit.response;
 
 import com.google.gson.annotations.SerializedName;
 import com.tunity.assignment.data.network.retrofit.util.NetworkConstants;
+import com.tunity.assignment.ui.model.BaseModel;
 
-public class ArticleVO {
+public class ArticleVO extends BaseModel {
 
     @SerializedName(NetworkConstants.SOURCE)
     public SourceNetwork sourceNetwork;
@@ -23,27 +24,13 @@ public class ArticleVO {
     public String content;
 
     public ArticleVO(SourceNetwork sourceNetwork, String author, String title, String description, String url, String urlToImage, String publishedAt, String content) {
-        if(sourceNetwork!=null) {
-            this.sourceNetwork = sourceNetwork;
-        } else {
-            this.sourceNetwork = new SourceNetwork("-","Unknown");
-        }
-        if(author!=null) {
-            this.author = author;
-        } else {
-            this.author = "Anonymous";
-        }
-        if(title!=null) this.title = title;
-        else this.title = "Unknown";
-        if(description!=null) this.description = description;
-        else this.description = "Undefined";
-        if(url!=null) this.url = url;
-        else this.url = " ";
-        if(urlToImage!=null) this.urlToImage = urlToImage;
-        else this.urlToImage = "";
-        if(publishedAt!=null) this.publishedAt = publishedAt;
-        else this.publishedAt = "-";
-        if(content!=null) this.content = content;
-        else this.content = "-";
+        this.sourceNetwork = sourceNetwork;
+        this.author = author;
+        this.title = title;
+        this.description = description;
+        this.url = url;
+        this.urlToImage = urlToImage;
+        this.publishedAt = publishedAt;
+        this.content = content;
     }
 }
