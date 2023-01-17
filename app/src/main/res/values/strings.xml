@@ -1,12 +1,12 @@
 <resources>
     <string name="app_name">Assignment</string>
 
-    <string name="default_author">Anonymous</string>
-    <string name="default_title">Untitled</string>
-    <string name="default_source_name">Example.com</string>
+    <string name="default_author">Author - Anonymous</string>
+    <string name="default_title">Name - Untitled</string>
+    <string name="default_source_name">Source - Example.com</string>
     <string name="default_description">No description</string>
-    <string name="default_url"> </string>
+    <string name="default_url">Read more details... no link available.</string>
     <string name="default_url_to_image"> </string>
-    <string name="default_publish_at">Unknown</string>
+    <string name="default_publish_at">Publish at - Unknown</string>
     <string name="default_content">No content available for this.</string>
 </resources>
