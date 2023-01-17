@@ -3,6 +3,8 @@ package com.tunity.assignment.ui.viewmodel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
+
+import com.tunity.assignment.BuildConfig;
 import com.tunity.assignment.data.database.room.entity.ArticleEntity;
 import com.tunity.assignment.data.database.LocalRepository;
 import com.tunity.assignment.data.network.NetworkRepository;
@@ -59,7 +61,7 @@ public class NewsListViewModel extends ViewModel {
                     }
                 });
 
-        networkRepository.getNewsListFromRetrofit(NetworkConstants.API_KEY)
+        networkRepository.getNewsListFromRetrofit(BuildConfig.API_KEY)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<List<ArticleVO>>() {

@@ -4,6 +4,7 @@ import android.content.Context;
 
 import androidx.room.Room;
 
+import com.tunity.assignment.BuildConfig;
 import com.tunity.assignment.data.database.room.MyRoomDatabase;
 import com.tunity.assignment.data.database.room.util.DatabaseConstants;
 import com.tunity.assignment.data.network.retrofit.api.RetrofitApi;
@@ -37,7 +38,7 @@ public class AppModule {
     @Singleton
     public Retrofit providesRetrofitInstance() {
         return new Retrofit.Builder()
-                .baseUrl(NetworkConstants.BASE_URL)
+                .baseUrl(BuildConfig.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .client(new OkHttpClient.Builder()
