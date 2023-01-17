@@ -68,10 +68,9 @@ public class NewsListActivity extends BaseActivity implements ListItemOnClickLis
                 .observe(this, activeNetworkStateObserver);
     }
 
-
     @Override
     public void onClickItem(ArticleEntity article) {
-        startActivity(DetailActivity.newIntent(this));
+        startActivity(DetailActivity.newIntent(this).putExtra(DetailActivity.EXTRAS,article));
     }
 
     //On swipe refreshed

@@ -7,8 +7,10 @@ import androidx.room.PrimaryKey;
 import com.tunity.assignment.data.database.room.util.DatabaseConstants;
 import com.tunity.assignment.ui.model.BaseModel;
 
+import java.io.Serializable;
+
 @Entity(tableName = "article_table")
-public class ArticleEntity extends BaseModel {
+public class ArticleEntity extends BaseModel implements Serializable {
 
     @ColumnInfo(name = DatabaseConstants.SOURCE)
     public SourceLocal sourceLocal;

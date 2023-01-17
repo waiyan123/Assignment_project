@@ -1,6 +1,8 @@
 package com.tunity.assignment.data.database.room.entity;
 
-public class SourceLocal {
+import java.io.Serializable;
+
+public class SourceLocal implements Serializable {
     public String id;
     public String name;
 

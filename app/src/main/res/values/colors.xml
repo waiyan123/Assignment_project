@@ -10,4 +10,5 @@
 
     <color name="pale_white">#d7d3ba</color>
     <color name="transparent60_black">#99000000</color>
+    <color name="link_color">#0000EE</color>
 </resources>
