@@ -51,7 +51,7 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsItemViewHolder
             }
             holder.itemView.setOnClickListener(view ->
                     itemOnClickListener.onClickItem(newsList.get(position)));
-            positionListener.onPosition(position);
+            positionListener.onScrollPosition(position);
         }
     }
 

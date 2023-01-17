@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -76,6 +77,13 @@ public class NewsListActivity extends BaseActivity implements ListItemOnClickLis
     }
 
     @Override
+    public void onBackPressed() {
+        if(fabToTop.isShown()) {
+            rvList.smoothScrollToPosition(0);
+        } else super.onBackPressed();
+    }
+
+    @Override
     public void onClickItem(ArticleEntity article) {
         startActivity(DetailActivity.newIntent(this).putExtra(DetailActivity.EXTRAS,article));
     }
@@ -88,7 +96,7 @@ public class NewsListActivity extends BaseActivity implements ListItemOnClickLis
 
     //Recyclerview scroll position
     @Override
-    public void onPosition(Integer position) {
+    public void onScrollPosition(Integer position) {
         if(position>5) fabToTop.show();
         else fabToTop.hide();
     }
