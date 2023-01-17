@@ -1,12 +1,13 @@
 package com.tunity.assignment.ui.view.activities;
 
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.tunity.assignment.R;
@@ -27,6 +28,8 @@ public class NewsListActivity extends BaseActivity implements ListItemOnClickLis
     private NewsRecyclerAdapter rvAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
     private FloatingActionButton fabToTop;
+
+    private AppCompatImageView imgConnectionError;
 
     private final Observer<Boolean> activeNetworkStateObserver = isConnected -> {
         if(!isConnected) {
@@ -49,15 +52,19 @@ public class NewsListActivity extends BaseActivity implements ListItemOnClickLis
         rvList.setLayoutManager(linearLayoutManager);
         rvList.setAdapter(rvAdapter);
 
-        fabToTop = findViewById(R.id.fab_to_top);
+        fabToTop = findViewById(R.id.fab_top);
         fabToTop.setOnClickListener(view -> {
             rvList.smoothScrollToPosition(0);
         });
+
+        imgConnectionError = findViewById(R.id.img_connection_error);
 
         mViewModel = new ViewModelProvider(this).get(NewsListViewModel.class);
         mViewModel.getArticlesLiveData().observe(this, articleEntityList -> {
             rvAdapter.setNewData(articleEntityList);
             swipeRefreshLayout.setRefreshing(false);
+            if(!articleEntityList.isEmpty()) imgConnectionError.setVisibility(View.GONE);
+
         });
         mViewModel.observeErrorState().observe(this, errorStr -> {
 

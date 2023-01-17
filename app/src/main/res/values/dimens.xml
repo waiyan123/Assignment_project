@@ -18,4 +18,6 @@
     <dimen name="textview_padding_small">10dp</dimen>
     <dimen name="textview_padding_extra_small">5dp</dimen>
 
+    <dimen name="fab_margin_large">40dp</dimen>
+
 </resources>

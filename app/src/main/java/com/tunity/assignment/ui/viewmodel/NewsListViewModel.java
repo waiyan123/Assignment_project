@@ -3,13 +3,11 @@ package com.tunity.assignment.ui.viewmodel;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
-
 import com.tunity.assignment.BuildConfig;
 import com.tunity.assignment.data.database.room.entity.ArticleEntity;
 import com.tunity.assignment.data.database.LocalRepository;
 import com.tunity.assignment.data.network.NetworkRepository;
 import com.tunity.assignment.data.network.retrofit.response.ArticleVO;
-import com.tunity.assignment.data.network.retrofit.util.NetworkConstants;
 import com.tunity.assignment.data.NewsMapper;
 import java.util.List;
 import javax.inject.Inject;
@@ -25,9 +23,9 @@ public class NewsListViewModel extends ViewModel {
     private final MutableLiveData<List<ArticleEntity>> articlesListLiveData = new MutableLiveData<>();
     private final MutableLiveData<String> errorLiveData = new MutableLiveData<>();
 
-    private LocalRepository localRepository ;
-    private NetworkRepository networkRepository;
-    private NewsMapper newsMapper;
+    private final LocalRepository localRepository ;
+    private final NetworkRepository networkRepository;
+    private final NewsMapper newsMapper;
     @Inject
     public NewsListViewModel(LocalRepository localRepository, NetworkRepository networkRepository, NewsMapper newsMapper) {
         this.localRepository = localRepository;

@@ -5,17 +5,14 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.appcompat.widget.Toolbar;
-
 import com.bumptech.glide.Glide;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.tunity.assignment.R;
 import com.tunity.assignment.data.database.room.entity.ArticleEntity;
 import com.tunity.assignment.ui.util.UiConstants;
@@ -55,7 +52,7 @@ public class DetailActivity extends BaseActivity{
         if(article.urlToImage!=null) {
             Glide.with(this)
                     .load(Uri.parse(article.urlToImage))
-                    .placeholder(R.drawable.rv_image_item)
+                    .placeholder(R.drawable.img_placeholder)
                     .into(imgBanner);
         }
         if(article.title!=null) tvTitle.setText(article.title);
@@ -70,6 +67,11 @@ public class DetailActivity extends BaseActivity{
         }
         if(article.publishedAt!=null) tvPublishAt.setText(UiConstants.publish_at+article.publishedAt);
         if(article.content!=null) tvContent.setText(article.content);
+
+        FloatingActionButton fabBack = findViewById(R.id.fab_back);
+        fabBack.setOnClickListener(view -> {
+            onBackPressed();
+        });
     }
 
     private void navigate(String url) {

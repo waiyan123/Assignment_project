@@ -1,28 +1,24 @@
 package com.tunity.assignment.ui.view.adapters;
 
 import android.annotation.SuppressLint;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.tunity.assignment.R;
 import com.tunity.assignment.data.database.room.entity.ArticleEntity;
 import com.tunity.assignment.ui.view.listeners.AdapterPositionListener;
 import com.tunity.assignment.ui.view.listeners.ListItemOnClickListener;
 import com.tunity.assignment.ui.view.viewholders.NewsItemViewHolder;
-
 import java.util.List;
 
 public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsItemViewHolder> {
 
     private List<ArticleEntity> newsList;
-    private ListItemOnClickListener itemOnClickListener;
-    private AdapterPositionListener positionListener;
+    private final ListItemOnClickListener itemOnClickListener;
+    private final AdapterPositionListener positionListener;
 
     public NewsRecyclerAdapter(ListItemOnClickListener itemOnClickListener, AdapterPositionListener positionListener) {
         this.itemOnClickListener = itemOnClickListener;
@@ -50,7 +46,7 @@ public class NewsRecyclerAdapter extends RecyclerView.Adapter<NewsItemViewHolder
             if(newsList.get(position).urlToImage!=null) {
                 Glide.with(holder.itemView)
                         .load(newsList.get(position).urlToImage)
-                        .placeholder(R.drawable.rv_image_item)
+                        .placeholder(R.drawable.img_placeholder)
                         .into(holder.imgArticleBanner);
             }
             holder.itemView.setOnClickListener(view ->
