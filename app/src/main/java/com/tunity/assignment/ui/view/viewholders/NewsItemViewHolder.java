@@ -17,7 +17,7 @@ public class NewsItemViewHolder extends RecyclerView.ViewHolder {
     public TextView tvTitle;
     public NewsItemViewHolder(View itemView) {
         super(itemView);
-        imgArticleBanner = itemView.findViewById(R.id.img_article_item);
+        imgArticleBanner = itemView.findViewById(R.id.img_list_item_banner);
         tvAuthor = itemView.findViewById(R.id.tv_author_item);
         tvTitle = itemView.findViewById(R.id.tv_title_item);
     }

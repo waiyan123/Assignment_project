@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="15dp"
+    android:layout_marginBottom="@dimen/textview_margin_medium"
     app:cardCornerRadius="10dp"
-    android:elevation="20dp"
+    android:elevation="10dp"
     android:backgroundTint="@color/white"
     >
 
@@ -20,9 +20,9 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/img_article_item"
+                android:id="@+id/img_list_item_banner"
                 android:layout_width="match_parent"
-                android:layout_height="200dp"
+                android:layout_height="@dimen/image_banner_height_medium"
                 android:scaleType="centerCrop"
                 android:src="@drawable/rv_image_item" />
 
@@ -31,8 +31,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|bottom"
-                android:layout_marginStart="20dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginStart="@dimen/textview_margin_large"
+                android:layout_marginBottom="@dimen/textview_margin_medium"
                 android:text="@string/default_author"
                 android:textColor="@color/white" />
         </FrameLayout>
@@ -43,10 +43,10 @@
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layout_banner"
             android:singleLine="true"
-            android:paddingTop="10dp"
-            android:paddingBottom="15dp"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
+            android:paddingTop="@dimen/textview_padding_medium"
+            android:paddingBottom="@dimen/textview_padding_medium"
+            android:paddingStart="@dimen/textview_padding_small"
+            android:paddingEnd="@dimen/textview_padding_small"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"/>
     </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,6 +3,7 @@
 
     <string name="default_author">Anonymous</string>
     <string name="default_title">Untitled</string>
+    <string name="default_source_name">Example.com</string>
     <string name="default_description">No description</string>
     <string name="default_url"> </string>
     <string name="default_url_to_image"> </string>

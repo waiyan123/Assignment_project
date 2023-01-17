@@ -71,7 +71,7 @@ public class NewsListActivity extends BaseActivity implements ListItemOnClickLis
 
     @Override
     public void onClickItem(ArticleEntity article) {
-        showSnackBar("Check your network connection . . . ",findViewById(R.id.layout_news_list));
+        startActivity(DetailActivity.newIntent(this));
     }
 
     //On swipe refreshed
